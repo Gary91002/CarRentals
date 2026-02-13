@@ -1,6 +1,6 @@
 ﻿namespace Maintenance.WebAPI.Models
 {
-	public class RepairHistoryDTO
+	public class RepairHistoryDto
 	{
 		public int Id { get; set; }
 		public int VehicleId { get; set; }
