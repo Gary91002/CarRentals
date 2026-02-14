@@ -15,7 +15,7 @@ namespace Maintenance.WebAPI.Services
 					RepairDate = DateTime.Now.AddDays(-10),
 					Description = "Oil change and filter replacement",
 					Cost = 79.99m,
-					PerformedBy = "John's Auto Shop"
+					PerformedBy = "John's Auto Shop test"
 				},
 				new RepairHistoryDto
 				{
