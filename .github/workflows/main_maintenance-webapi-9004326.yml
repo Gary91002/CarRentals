@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - maintenance-webapi-9004326
+name: Build and deploy ASP.Net Core app to Azure Web App - car-rental-platform
 
 on:
   push:
@@ -23,11 +23,11 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build Maintenance.WebAPI only
-        run: dotnet build ./Applications/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
+      - name: Build CarRentalPlatform only
+        run: dotnet build ./Applications/CarRentalPlatform/CarRentalPlatform.csproj --configuration Release
 
-      - name: Publish Maintenance.WebAPI
-        run: dotnet publish ./Applications/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Publish CarRentalPlatform
+        run: dotnet publish ./Applications/CarRentalPlatform/CarRentalPlatform.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -51,14 +51,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A45D4E338FD444E48ADC7B38B2AB3878 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B68554CEAD2043EAB1A7B5D6DD96C7B8 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AA4510515BA84CF9AD72369305D332D8 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'maintenance-webapi-9004326'
+          app-name: 'car-rental-platform'
           slot-name: 'Production'
           package: .
