@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - maintenance-webapi-9004326
+name: maintenance-webapi-9004326
 
 on:
   push:
