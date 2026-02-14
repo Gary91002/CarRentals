@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy ASP.Net Core app to Azure Web App - maintenance-webapi-9004326
 
 on:
@@ -14,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -25,12 +22,12 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        # CHANGED: Added specific path to the Maintenance.WebAPI project file
-        run: dotnet build Applications/CarRentalPlatform/Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
+        # FIXED PATH: Removed 'Applications/'
+        run: dotnet build CarRentalPlatform/Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
 
       - name: dotnet publish
-        # CHANGED: Added specific path to the Maintenance.WebAPI project file
-        run: dotnet publish Applications/CarRentalPlatform/Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        # FIXED PATH: Removed 'Applications/'
+        run: dotnet publish CarRentalPlatform/Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -41,13 +38,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
