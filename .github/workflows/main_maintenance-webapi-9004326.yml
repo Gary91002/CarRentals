@@ -23,11 +23,11 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build maintenance API only
-        run: dotnet build ./Applications/CarRentalPlatform/CarRentalPlatform.csproj --configuration Release
+      - name: Build Maintenance.WebAPI only
+        run: dotnet build ./Applications/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
 
-      - name: Publish maintenance API
-        run: dotnet publish ./Applications/CarRentalPlatform/CarRentalPlatform.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Publish Maintenance.WebAPI
+        run: dotnet publish ./Applications/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
