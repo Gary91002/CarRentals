@@ -22,12 +22,12 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        # FIXED PATH: Removed 'Applications/'
-        run: dotnet build CarRentalPlatform/Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
+        # CHANGED: Path is set to Services/Maintenance.WebAPI/...
+        run: dotnet build Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
 
       - name: dotnet publish
-        # FIXED PATH: Removed 'Applications/'
-        run: dotnet publish CarRentalPlatform/Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        # CHANGED: Path is set to Services/Maintenance.WebAPI/...
+        run: dotnet publish Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
