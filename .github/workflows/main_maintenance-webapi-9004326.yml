@@ -22,18 +22,18 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        # CHANGED: Path is set to Services/Maintenance.WebAPI/...
+        # Uses the correct path from your file structure
         run: dotnet build Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
 
       - name: dotnet publish
-        # CHANGED: Path is set to Services/Maintenance.WebAPI/...
-        run: dotnet publish Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        # Publishes to a specific folder named 'publish' in the current workspace
+        run: dotnet publish Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj -c Release -o ./publish
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: ./publish
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,7 +47,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
+          path: ./publish
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -61,4 +62,4 @@ jobs:
         with:
           app-name: 'maintenance-webapi-9004326'
           slot-name: 'Production'
-          package: .
+          package: ./publish
