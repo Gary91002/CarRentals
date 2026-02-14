@@ -1,4 +1,4 @@
-name: CarRentalMVC
+name:  CarRentalMVC
 
 on:
   push:
@@ -22,10 +22,10 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build CarRental/Applications/CarRentalPlatform/CarRentalPlatform.csproj --configuration Release
+        run: dotnet build Applications/CarRentalPlatform/CarRentalPlatform.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish CarRental/Applications/CarRentalPlatform/CarRentalPlatform.csproj -c Release -o ./publish
+        run: dotnet publish Applications/CarRentalPlatform/CarRentalPlatform.csproj -c Release -o ./publish
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
