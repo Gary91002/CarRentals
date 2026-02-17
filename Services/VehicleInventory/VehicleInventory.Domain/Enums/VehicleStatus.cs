@@ -11,6 +11,7 @@ namespace VehicleInventory.Domain.Enums
 		Available,
 		Sold,
 		Maintenance,
-		Reserved
+		Reserved,
+		Rented
 	}
 }
