@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleInventory.Application.Services
 {
-	public class CreateVehicle
+	internal class GSUpdateVehicleStatus
 	{
 	}
 }

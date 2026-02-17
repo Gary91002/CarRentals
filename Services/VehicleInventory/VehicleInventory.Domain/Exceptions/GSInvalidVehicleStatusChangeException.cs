@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace VehicleInventory.Domain.Exceptions
 {
-	public class InvalidVehicleStatusChangeException : Exception
+	public class GSInvalidVehicleStatusChangeException : Exception
 	{
-		public InvalidVehicleStatusChangeException(string message) : base(message)
+		public GSInvalidVehicleStatusChangeException(string message) : base(message)
 		{
 		}
 	}

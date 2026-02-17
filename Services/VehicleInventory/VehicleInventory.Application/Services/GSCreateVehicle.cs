@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleInventory.Application.Services
 {
-	internal class DeleteVehicle
+	internal class GSCreateVehicle
 	{
 	}
 }

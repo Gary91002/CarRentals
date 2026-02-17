@@ -8,7 +8,7 @@ using VehicleInventory.Domain.Exceptions;
 
 namespace VehicleInventory.Domain.VehicleAggregate
 {
-	public class Vehicle
+	public class GSVehicle
 	{
 		public int Id { get; set; }
 		public string VehicleCode { get; set; } = string.Empty;
@@ -16,7 +16,7 @@ namespace VehicleInventory.Domain.VehicleAggregate
 		public VehicleType VehicleType { get; set; }
 		public VehicleStatus VehicleStatus { get; set; }
 
-		public Vehicle(int Id, string vehicleCode, int locationId, VehicleType vehicleType, VehicleStatus vehicleStatus)
+		public GSVehicle(int Id, string vehicleCode, int locationId, VehicleType vehicleType, VehicleStatus vehicleStatus)
 		{
 			this.Id = Id;
 			this.VehicleCode = vehicleCode;
@@ -29,7 +29,7 @@ namespace VehicleInventory.Domain.VehicleAggregate
 		{
 			if (this.VehicleStatus == VehicleStatus.Reserved)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a reserved vehicle as available.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a reserved vehicle as available.");
 			}
 			else
 			{
@@ -42,17 +42,17 @@ namespace VehicleInventory.Domain.VehicleAggregate
 		{
 			if (this.VehicleStatus == VehicleStatus.Rented)
 			{
-				throw new InvalidVehicleStatusChangeException("Vehicle is already rented.");
+				throw new GSInvalidVehicleStatusChangeException("Vehicle is already rented.");
 			}
 
 			if (this.VehicleStatus == VehicleStatus.Reserved)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a reserved vehicle as rented.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a reserved vehicle as rented.");
 			}
 
 			if (this.VehicleStatus == VehicleStatus.Maintenance)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a vehicle under maintenance as rented.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a vehicle under maintenance as rented.");
 			}
 
 			this.VehicleStatus = VehicleStatus.Rented;
@@ -63,15 +63,15 @@ namespace VehicleInventory.Domain.VehicleAggregate
 		{
 			if (this.VehicleStatus == VehicleStatus.Rented)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a rented vehicle as reserved.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a rented vehicle as reserved.");
 			}
 			if (this.VehicleStatus == VehicleStatus.Maintenance)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a vehicle under maintenance as reserved.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a vehicle under maintenance as reserved.");
 			}
 			if (this.VehicleStatus == VehicleStatus.Reserved)
 			{
-				throw new InvalidVehicleStatusChangeException("Vehicle is already reserved.");
+				throw new GSInvalidVehicleStatusChangeException("Vehicle is already reserved.");
 			}
 			this.VehicleStatus = VehicleStatus.Reserved;
 		}
@@ -80,11 +80,11 @@ namespace VehicleInventory.Domain.VehicleAggregate
 		{
 			if (this.VehicleStatus == VehicleStatus.Rented)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a rented vehicle as under maintenance.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a rented vehicle as under maintenance.");
 			}
 			if (this.VehicleStatus == VehicleStatus.Reserved)
 			{
-				throw new InvalidVehicleStatusChangeException("Cannot mark a reserved vehicle as under maintenance.");
+				throw new GSInvalidVehicleStatusChangeException("Cannot mark a reserved vehicle as under maintenance.");
 			}
 			this.VehicleStatus = VehicleStatus.Maintenance;
 		}

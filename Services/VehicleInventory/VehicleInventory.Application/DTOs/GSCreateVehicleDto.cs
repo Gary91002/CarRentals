@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleInventory.Application.DTOs
 {
-	public class VehicleDto
+	public class GSCreateVehicleDto
 	{
 	}
 }

@@ -10,9 +10,9 @@ namespace VehicleInventory.Application.Interfaces
 {
 	public interface IVehicleRepository
 	{
-		Task<Vehicle> GetById(int id);
-		Task<List<Vehicle>> GetAll();
-		Task Add(Vehicle vehicle);
+		Task<GSVehicle> GetById(int id);
+		Task<List<GSVehicle>> GetAll();
+		Task Add(GSVehicle vehicle);
 		Task Delete(int id);
 		Task SaveChanges();
 

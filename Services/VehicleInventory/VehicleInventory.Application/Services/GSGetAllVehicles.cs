@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VehicleInventory.Application.DTOs
+namespace VehicleInventory.Application.Services
 {
-	public class UpdateVehicleStatusDto
+	public class GSGetAllVehicles
 	{
 	}
 }
