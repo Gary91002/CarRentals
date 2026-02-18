@@ -12,7 +12,7 @@ namespace VehicleInventory.Application.Services
 {
 	public class GSCreateVehicle
 	{
-		public IVehicleRepository _vehicleRepository;
+		private readonly IVehicleRepository _vehicleRepository;
 
 		public GSCreateVehicle(IVehicleRepository vehicleRepository)
 		{
@@ -27,7 +27,7 @@ namespace VehicleInventory.Application.Services
 				dto.VehicleCode,
 				dto.LocationId,
 				dto.VehicleType,
-				dto.VehicleStatus
+				VehicleStatus.Available // Should be available when created, don't want the client to set it
 			);
 
 			await _vehicleRepository.Add(vehicle);
