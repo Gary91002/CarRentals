@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<GSInventoryDbContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("Server=(localdb)\\MSSQLLocalDB;Database=VehicleInventory;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true")));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IVehicleRepository, GSVehicleRepository>();
 builder.Services.AddScoped<GSCreateVehicle>();
 builder.Services.AddScoped<GSGetAllVehicles>();
