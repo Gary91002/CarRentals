@@ -14,5 +14,19 @@ namespace VehicleInventory.Infrastructure.Data
 		{
 		}
 		public DbSet<GSVehicle> Vehicles { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.Entity<GSVehicle>(entity =>
+			{
+				entity.HasKey(e => e.Id);
+				entity.Property(e => e.VehicleCode).IsRequired().HasMaxLength(50);
+				entity.Property(e => e.LocationId).IsRequired();
+				entity.Property(e => e.VehicleType).IsRequired();
+				entity.Property(e => e.VehicleStatus).IsRequired();
+			});
+		}
 	}
 }
