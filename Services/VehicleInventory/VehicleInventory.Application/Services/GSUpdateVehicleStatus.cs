@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleInventory.Application.DTOs;
+using VehicleInventory.Application.Exceptions;
 using VehicleInventory.Application.Interfaces;
 using VehicleInventory.Domain.Enums;
 
@@ -41,7 +42,7 @@ namespace VehicleInventory.Application.Services
 					currentVehicle.MarkServiced();
 					break;
 				default:
-					throw new Exception($"Invalid vehicle status: {newStatus}");
+					throw new InvalidVehicleStatusException($"Invalid vehicle status: {newStatus}");
 			}
 
 			await _vehicleRepository.SaveChanges();

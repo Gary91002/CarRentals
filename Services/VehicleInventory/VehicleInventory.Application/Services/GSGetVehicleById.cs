@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleInventory.Application.DTOs;
+using VehicleInventory.Application.Exceptions;
 using VehicleInventory.Application.Interfaces;
 
 
@@ -24,7 +25,7 @@ namespace VehicleInventory.Application.Services
 
 			if (vehicle == null)
 			{
-				throw new Exception($"Vehicle with ID {id} not found.");
+				throw new NotFoundException($"Vehicle with ID {id} not found.");
 			}
 			return new GSVehicleDto
 			{
