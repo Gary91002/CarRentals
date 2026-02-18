@@ -1,12 +1,18 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VehicleInventory.Domain.VehicleAggregate;
 
 namespace VehicleInventory.Infrastructure.Data
 {
-	internal class GSInventoryDbContext
+	public class GSInventoryDbContext : DbContext
 	{
+		public GSInventoryDbContext(DbContextOptions<GSInventoryDbContext> options) : base(options)
+		{
+		}
+		public DbSet<GSVehicle> Vehicles { get; set; }
 	}
 }
