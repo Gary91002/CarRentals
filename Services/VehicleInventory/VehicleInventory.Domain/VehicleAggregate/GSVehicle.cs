@@ -10,15 +10,14 @@ namespace VehicleInventory.Domain.VehicleAggregate
 {
 	public class GSVehicle
 	{
-		public int Id { get; set; }
-		public string VehicleCode { get; set; } = string.Empty;
-		public int LocationId { get; set; }
-		public VehicleType VehicleType { get; set; }
-		public VehicleStatus VehicleStatus { get; set; }
+		public int Id { get; private set; }
+		public string VehicleCode { get; private set; } = string.Empty;
+		public int LocationId { get; private set; }
+		public VehicleType VehicleType { get; private set; }
+		public VehicleStatus VehicleStatus { get; private set; }
 
-		public GSVehicle(int Id, string vehicleCode, int locationId, VehicleType vehicleType, VehicleStatus vehicleStatus)
+		public GSVehicle(string vehicleCode, int locationId, VehicleType vehicleType, VehicleStatus vehicleStatus)
 		{
-			this.Id = Id;
 			this.VehicleCode = vehicleCode;
 			this.LocationId = locationId;
 			this.VehicleType = vehicleType;
