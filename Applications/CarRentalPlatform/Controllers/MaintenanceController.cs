@@ -23,5 +23,24 @@ namespace CarRentalPlatform.Controllers
 			$"api/maintenance/vehicles/{vehicleId}/repairs");
 			return View(repairs ?? new List<RepairHistoryViewModel>());
 		}
+
+		public async Task<IActionResult> Usage()
+		{
+			var client = _httpClientFactory.CreateClient("MaintenanceApi");
+			var result = await client.GetFromJsonAsync<object>("api/RepairHistory/usage");
+			return View(result);
+		}
+
+		public async Task<IActionResult> Transfer(int fromId, int toId, decimal amount)
+		{
+			var client = _httpClientFactory.CreateClient("MaintenanceApi");
+			var response = await client.PostAsync(
+			$"api/RepairHistory/transfer?fromId={fromId}&toId={toId}&amount={amount}",
+			null);
+			var content = await response.Content.ReadAsStringAsync();
+			ViewBag.Result = content;
+			return View();
+		}
+
 	}
 }

@@ -7,6 +7,12 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient("MaintenanceApi", (sp, client) =>
+{
+	var config = sp.GetRequiredService<IConfiguration>();
+	client.BaseAddress = new Uri(config["MaintenanceApi:BaseUrl"]!);
+	client.DefaultRequestHeaders.Add("X-Api-Key", "MY_SECRET_KEY_123");
+});
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CustomerProfileContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDbConnection")));
