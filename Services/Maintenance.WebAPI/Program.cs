@@ -10,7 +10,37 @@ builder.Services.AddSingleton<IRepairHistoryService, FakeRepairHistoryService>()
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+	// Add API key support
+	c.AddSecurityDefinition("ApiKey", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+	{
+		Description = "API Key needed to access the endpoints. Add X-Api-Key: MY_SECRET_KEY_123",
+		Name = "X-Api-Key",
+		In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+		Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+		Scheme = "ApiKeyScheme"
+	});
+
+	c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+	{
+		{
+			new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+			{
+				Reference = new Microsoft.OpenApi.Models.OpenApiReference
+				{
+					Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+					Id = "ApiKey"
+				},
+				Scheme = "ApiKeyScheme",
+				Name = "X-Api-Key",
+				In = Microsoft.OpenApi.Models.ParameterLocation.Header
+			},
+			new List<string>()
+		}
+	});
+});
+
 
 
 var app = builder.Build();
