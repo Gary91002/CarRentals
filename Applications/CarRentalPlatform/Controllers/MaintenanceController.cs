@@ -27,7 +27,7 @@ namespace CarRentalPlatform.Controllers
 		public async Task<IActionResult> Usage()
 		{
 			var client = _httpClientFactory.CreateClient("MaintenanceApi");
-			var result = await client.GetFromJsonAsync<object>("api/RepairHistory/usage");
+			var result = await client.GetFromJsonAsync<object>("api/maintenance/usage");
 			return View(result);
 		}
 
@@ -35,7 +35,7 @@ namespace CarRentalPlatform.Controllers
 		{
 			var client = _httpClientFactory.CreateClient("MaintenanceApi");
 			var response = await client.PostAsync(
-			$"api/RepairHistory/transfer?fromId={fromId}&toId={toId}&amount={amount}",
+			$"api/maintenance/transfer?fromId={fromId}&toId={toId}&amount={amount}",
 			null);
 			var content = await response.Content.ReadAsStringAsync();
 			ViewBag.Result = content;

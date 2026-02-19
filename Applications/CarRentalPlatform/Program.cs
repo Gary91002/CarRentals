@@ -18,11 +18,11 @@ builder.Services.AddDbContext<CustomerProfileContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDbConnection")));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient("MaintenanceApi", (sp, client) =>
-{
-	var config = sp.GetRequiredService<IConfiguration>();
-	client.BaseAddress = new Uri(config["MaintenanceApi:BaseUrl"]!);
-});
+//builder.Services.AddHttpClient("MaintenanceApi", (sp, client) =>
+//{
+//	var config = sp.GetRequiredService<IConfiguration>();
+//	client.BaseAddress = new Uri(config["MaintenanceApi:BaseUrl"]!);
+//});
 
 var app = builder.Build();
 
