@@ -3,8 +3,8 @@ name: maintenance-webapi-9004326
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main # Runs when code is pushed to main branch
+  workflow_dispatch: # Allows manual trigger from GitHub
 
 jobs:
   build:
@@ -14,15 +14,15 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4 # Checks out repository code
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'
+          dotnet-version: '8.x' # Installs .NET 8 SDK
 
       - name: Build with dotnet
-        # Uses the correct path from your file structure
+        # Specifies the project file to build and sets the configuration to Release
         run: dotnet build Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
 
       - name: dotnet publish

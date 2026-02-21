@@ -1,63 +1,65 @@
-name:  CarRentalMVC
+name: CarRentalMVC 
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main  # Runs when code is pushed to main branch
+  workflow_dispatch:  # Allows manual trigger from GitHub
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
 
     permissions:
-      contents: read
+      contents: read  #
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # Checks out repository code
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'
+          dotnet-version: '8.x'  # Installs .NET 8 SDK
 
       - name: Build with dotnet
-        run: dotnet build Applications/CarRentalPlatform/CarRentalPlatform.csproj --configuration Release
+          # Specifies the project file to build and sets the configuration to Release
+        run: dotnet build Applications/CarRentalPlatform/CarRentalPlatform.csproj --configuration Release  # Builds project
 
+        # Builds the .NET project in Release configuration using the dotnet CLI. The path to the .csproj file is provided to ensure the correct project is built.
       - name: dotnet publish
-        run: dotnet publish Applications/CarRentalPlatform/CarRentalPlatform.csproj -c Release -o ./publish
+        run: dotnet publish Applications/CarRentalPlatform/CarRentalPlatform.csproj -c Release -o ./publish  # Publishes compiled output
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ./publish
+          name: .net-app  # Artifact name
+          path: ./publish  # Uploads published files
 
   deploy:
-    runs-on: ubuntu-latest
-    needs: build
+    runs-on: ubuntu-latest 
+    needs: build  # Runs only after build job completes
 
     permissions:
-      id-token: write
-      contents: read
+      id-token: write  # Required for Azure login
+      contents: read  # Read-only access to repo
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: .net-app
+          name: .net-app  # Downloads published artifact
           path: ./publish
 
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AF65FAEA36BB4C7A9E48A1B16BA1BA9A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4C49D4075E8D4979BFBCB4C2090D32E2 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_43616D69EB71444495B7E5B84DB1A282 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AF65FAEA36BB4C7A9E48A1B16BA1BA9A }}  # Azure client ID
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4C49D4075E8D4979BFBCB4C2090D32E2 }}  # Azure tenant ID
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_43616D69EB71444495B7E5B84DB1A282 }}  # Azure subscription ID
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'CarRentalMVC'
-          slot-name: 'Production'
-          package: ./publish
+          app-name: 'CarRentalMVC'  # Azure Web App name
+          slot-name: 'Production'  # Deployment slot
+          package: ./publish  # Deploys published files

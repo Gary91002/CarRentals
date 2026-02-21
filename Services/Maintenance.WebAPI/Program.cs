@@ -1,4 +1,5 @@
 using Maintenance.WebAPI.Services;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,29 +13,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-	// Add API key support
-	c.AddSecurityDefinition("ApiKey", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+	// Add API key
+	c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
 	{
 		Description = "API Key needed to access the endpoints. Add X-Api-Key: MY_SECRET_KEY_123",
 		Name = "X-Api-Key",
-		In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-		Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+		In = ParameterLocation.Header,
+		Type = SecuritySchemeType.ApiKey,
 		Scheme = "ApiKeyScheme"
 	});
 
-	c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+	c.AddSecurityRequirement(new OpenApiSecurityRequirement
 	{
 		{
-			new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+			new OpenApiSecurityScheme
 			{
-				Reference = new Microsoft.OpenApi.Models.OpenApiReference
+				Reference = new OpenApiReference
 				{
-					Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+					Type = ReferenceType.SecurityScheme,
 					Id = "ApiKey"
 				},
 				Scheme = "ApiKeyScheme",
 				Name = "X-Api-Key",
-				In = Microsoft.OpenApi.Models.ParameterLocation.Header
+				In = ParameterLocation.Header
 			},
 			new List<string>()
 		}
@@ -56,6 +57,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+// Global error handling middleware
 app.Use(async (context, next) =>
 {
 	try
@@ -74,6 +76,8 @@ app.Use(async (context, next) =>
 		});
 	}
 });
+
+// API key validation middleware
 
 const string API_KEY = "MY_SECRET_KEY_123";
 app.Use(async (context, next) =>
