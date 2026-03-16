@@ -1,3 +1,4 @@
+using GS_Shared_Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using VehicleInventory.Application.Interfaces;
 using VehicleInventory.Application.Services;
@@ -22,6 +23,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<GSGlobalExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

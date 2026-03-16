@@ -6,22 +6,35 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalPlatform", "Applications\CarRentalPlatform\CarRentalPlatform.csproj", "{B7D34B19-B463-8A2D-B813-52C1E9932226}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalCustomers", "Services\CarRentalCustomers\CarRentalCustomers.csproj", "{A88AA0EC-0EC1-D815-1CBD-57BD4D5E0522}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C094B095-E383-4FBE-B78E-094D22C5FD06} = {C094B095-E383-4FBE-B78E-094D22C5FD06}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DA374289-26B1-4DF7-BD1D-A6E9E398AA89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintenance.WebAPI", "Services\Maintenance.WebAPI\Maintenance.WebAPI.csproj", "{E2071491-43B9-1A54-B896-A506D9230B49}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C094B095-E383-4FBE-B78E-094D22C5FD06} = {C094B095-E383-4FBE-B78E-094D22C5FD06}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VehicleInventory", "VehicleInventory", "{E8BCB0A1-8493-4B83-84A4-0115B5D6A223}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleInventory.WebAPI", "Services\VehicleInventory\VehicleInventory.WebAPI\VehicleInventory.WebAPI.csproj", "{83FC8FF2-EFCF-4A8B-9279-1FE83852D24D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C094B095-E383-4FBE-B78E-094D22C5FD06} = {C094B095-E383-4FBE-B78E-094D22C5FD06}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleInventory.Application", "Services\VehicleInventory\VehicleInventory.Application\VehicleInventory.Application.csproj", "{DAFC2AD2-E608-4D8E-8E61-F02C7048AD3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleInventory.Infrastructure", "Services\VehicleInventory\VehicleInventory.Infrastructure\VehicleInventory.Infrastructure.csproj", "{365E3800-8BF9-472E-B547-0404E944100E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleInventory.Domain", "Services\VehicleInventory\VehicleInventory.Domain\VehicleInventory.Domain.csproj", "{6340321B-3635-4CC8-8EC9-6BA56BE361DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CB491A33-D8FD-4160-B8FE-EA101049EAF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS_Shared_Infrastructure", "Shared\GS_Shared_Infrastructure\GS_Shared_Infrastructure.csproj", "{C094B095-E383-4FBE-B78E-094D22C5FD06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +70,10 @@ Global
 		{6340321B-3635-4CC8-8EC9-6BA56BE361DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6340321B-3635-4CC8-8EC9-6BA56BE361DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6340321B-3635-4CC8-8EC9-6BA56BE361DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +87,7 @@ Global
 		{DAFC2AD2-E608-4D8E-8E61-F02C7048AD3A} = {E8BCB0A1-8493-4B83-84A4-0115B5D6A223}
 		{365E3800-8BF9-472E-B547-0404E944100E} = {E8BCB0A1-8493-4B83-84A4-0115B5D6A223}
 		{6340321B-3635-4CC8-8EC9-6BA56BE361DC} = {E8BCB0A1-8493-4B83-84A4-0115B5D6A223}
+		{C094B095-E383-4FBE-B78E-094D22C5FD06} = {CB491A33-D8FD-4160-B8FE-EA101049EAF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FC7839A-F367-441C-83FB-C5DD065B13AC}

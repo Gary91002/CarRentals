@@ -1,5 +1,6 @@
 using CarRentalCustomers.Models;
 using CarRentalPlatform.Models;
+using GS_Shared_Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,11 +17,13 @@ builder.Services.AddDbContext<CustomerProfileContext>(options =>
 
 var app = builder.Build();
 
+app.UseMiddleware<GSGlobalExceptionMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

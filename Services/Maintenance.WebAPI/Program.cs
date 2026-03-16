@@ -1,3 +1,4 @@
+using GS_Shared_Infrastructure;
 using Maintenance.WebAPI.Services;
 using Microsoft.OpenApi.Models;
 
@@ -45,6 +46,8 @@ builder.Services.AddSwaggerGen(c =>
 
 
 var app = builder.Build();
+
+app.UseMiddleware<GSGlobalExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())

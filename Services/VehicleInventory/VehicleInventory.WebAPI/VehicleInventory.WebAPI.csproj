@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\GS_Shared_Infrastructure\GS_Shared_Infrastructure.csproj" />
     <ProjectReference Include="..\VehicleInventory.Application\VehicleInventory.Application.csproj" />
     <ProjectReference Include="..\VehicleInventory.Infrastructure\VehicleInventory.Infrastructure.csproj" />
   </ItemGroup>
