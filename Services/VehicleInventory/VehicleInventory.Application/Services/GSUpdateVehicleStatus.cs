@@ -50,7 +50,7 @@ namespace VehicleInventory.Application.Services
 			return new GSVehicleDto
 			{
 				Id = currentVehicle.Id,
-				VehicleCode = currentVehicle.VehicleCode,
+				VehicleCode = currentVehicle.VehicleCode.Value,
 				LocationId = currentVehicle.LocationId,
 				VehicleType = currentVehicle.VehicleType,
 				VehicleStatus = currentVehicle.VehicleStatus

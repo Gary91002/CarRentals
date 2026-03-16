@@ -24,6 +24,7 @@ jobs:
       - name: Build with dotnet
         # Specifies the project file to build and sets the configuration to Release
         run: dotnet build Services/Maintenance.WebAPI/Maintenance.WebAPI.csproj --configuration Release
+        # run: dotnet build Services/Payments.WebAPI/Payments.WebAPI.csproj --configuration Release
 
       - name: dotnet publish
         # Publishes to a specific folder named 'publish' in the current workspace

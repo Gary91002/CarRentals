@@ -23,7 +23,7 @@ namespace VehicleInventory.Application.Services
 			return vehicles.Select(vehicle => new GSVehicleDto
 			{
 				Id = vehicle.Id,
-				VehicleCode = vehicle.VehicleCode,
+				VehicleCode = vehicle.VehicleCode.Value,
 				LocationId = vehicle.LocationId,
 				VehicleType = vehicle.VehicleType,
 				VehicleStatus = vehicle.VehicleStatus

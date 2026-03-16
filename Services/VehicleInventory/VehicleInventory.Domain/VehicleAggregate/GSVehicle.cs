@@ -5,24 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using VehicleInventory.Domain.Enums;
 using VehicleInventory.Domain.Exceptions;
+using VehicleInventory.Domain.ValueObjects;
 
 namespace VehicleInventory.Domain.VehicleAggregate
 {
 	public class GSVehicle
 	{
 		public int Id { get; private set; }
-		public string VehicleCode { get; private set; } = string.Empty;
+		public GSVehicleCode VehicleCode { get; private set; }
 		public int LocationId { get; private set; }
 		public VehicleType VehicleType { get; private set; }
 		public VehicleStatus VehicleStatus { get; private set; }
 
-		public GSVehicle(string vehicleCode, int locationId, VehicleType vehicleType, VehicleStatus vehicleStatus)
+		public GSVehicle(GSVehicleCode vehicleCode, int locationId, VehicleType vehicleType, VehicleStatus vehicleStatus)
 		{
 			this.VehicleCode = vehicleCode;
 			this.LocationId = locationId;
 			this.VehicleType = vehicleType;
 			this.VehicleStatus = vehicleStatus;
 		}
+
+		//for ef core
+		private GSVehicle() { }
 
 		public void MarkAvailable()
 		{

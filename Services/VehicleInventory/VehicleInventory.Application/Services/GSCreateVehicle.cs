@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VehicleInventory.Application.DTOs;
 using VehicleInventory.Application.Interfaces;
 using VehicleInventory.Domain.Enums;
+using VehicleInventory.Domain.ValueObjects;
 using VehicleInventory.Domain.VehicleAggregate;
 
 namespace VehicleInventory.Application.Services
@@ -21,10 +22,11 @@ namespace VehicleInventory.Application.Services
 
 		public async Task CreateVehicle(GSCreateVehicleDto dto)
 		{
+			var vehicleCode = new GSVehicleCode(dto.VehicleCode);
 
 			var vehicle = new GSVehicle
 			(
-				dto.VehicleCode,
+				vehicleCode,
 				dto.LocationId,
 				dto.VehicleType,
 				VehicleStatus.Available // Should be available when created, don't want the client to set it
