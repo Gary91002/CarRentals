@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CB491A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS_Shared_Infrastructure", "Shared\GS_Shared_Infrastructure\GS_Shared_Infrastructure.csproj", "{C094B095-E383-4FBE-B78E-094D22C5FD06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Gateway", "API_Gateway\API_Gateway.csproj", "{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C094B095-E383-4FBE-B78E-094D22C5FD06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{365E3800-8BF9-472E-B547-0404E944100E} = {E8BCB0A1-8493-4B83-84A4-0115B5D6A223}
 		{6340321B-3635-4CC8-8EC9-6BA56BE361DC} = {E8BCB0A1-8493-4B83-84A4-0115B5D6A223}
 		{C094B095-E383-4FBE-B78E-094D22C5FD06} = {CB491A33-D8FD-4160-B8FE-EA101049EAF0}
+		{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120} = {DA374289-26B1-4DF7-BD1D-A6E9E398AA89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FC7839A-F367-441C-83FB-C5DD065B13AC}
