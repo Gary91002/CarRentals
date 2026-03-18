@@ -16,11 +16,12 @@ namespace CarRentalPlatform.Controllers
 			return View(new List<RepairHistoryViewModel>());
 		}
 		[HttpPost]
+		[HttpPost]
 		public async Task<IActionResult> History(int vehicleId)
 		{
 			var client = _httpClientFactory.CreateClient("MaintenanceApi");
 			var repairs = await client.GetFromJsonAsync<List<RepairHistoryViewModel>>(
-			$"api/maintenance/vehicles/{vehicleId}/repairs");
+				$"api/maintenance/vehicles/{vehicleId}/repairs");
 			return View(repairs ?? new List<RepairHistoryViewModel>());
 		}
 
@@ -33,7 +34,7 @@ namespace CarRentalPlatform.Controllers
 
 		public async Task<IActionResult> Transfer(int fromId, int toId, decimal amount)
 		{
-			var client = _httpClientFactory.CreateClient("MaintenanceApi");
+			var client = _httpClientFactory.CreateClient("ApiGateway");
 			var response = await client.PostAsync(
 			$"api/maintenance/transfer?fromId={fromId}&toId={toId}&amount={amount}",
 			null);
