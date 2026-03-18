@@ -15,4 +15,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\GS_Shared_Infrastructure\GS_Shared_Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

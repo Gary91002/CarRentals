@@ -18,6 +18,7 @@ builder.Services.AddDbContext<CustomerProfileContext>(options =>
 var app = builder.Build();
 
 app.UseMiddleware<GSGlobalExceptionMiddleware>();
+app.UseMiddleware<GSGatewayMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -37,6 +37,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS_Shared_Infrastructure", "Shared\GS_Shared_Infrastructure\GS_Shared_Infrastructure.csproj", "{C094B095-E383-4FBE-B78E-094D22C5FD06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Gateway", "API_Gateway\API_Gateway.csproj", "{C16D3A01-7B5D-4FCE-A52B-43FC93CDF120}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C094B095-E383-4FBE-B78E-094D22C5FD06} = {C094B095-E383-4FBE-B78E-094D22C5FD06}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
