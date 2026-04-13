@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CustomerProfileContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDbConnection")));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -27,7 +27,13 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+// Auto create DB/table for Docker SQL Server
+using (var scope = app.Services.CreateScope())
+{
+	var db = scope.ServiceProvider.GetRequiredService<CustomerProfileContext>();
+	db.Database.EnsureCreated();
+}
 
 app.UseAuthorization();
 

@@ -16,7 +16,6 @@ namespace CarRentalPlatform.Controllers
 			return View(new List<RepairHistoryViewModel>());
 		}
 		[HttpPost]
-		[HttpPost]
 		public async Task<IActionResult> History(int vehicleId)
 		{
 			var client = _httpClientFactory.CreateClient("MaintenanceApi");
