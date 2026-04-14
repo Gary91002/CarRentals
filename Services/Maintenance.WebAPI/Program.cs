@@ -59,7 +59,7 @@ app.UseSwaggerUI();
 
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 // Global error handling middleware
 app.Use(async (context, next) =>
